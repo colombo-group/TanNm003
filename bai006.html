@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="number" id='x1' />
+	<span><button type="button" onclick="Cong()">&#43;</button><button type="button" onclick="Tru()">&oline;</button><button type="button" onclick="Nhan()">x</button><button type="button" onclick="Chia()">&#47;</button><button type="button" onclick="Mu()">&#94;</button></span>
+	<input type="number" id='x2'><span>=</span>
+	<input type="number" id='kq'>
+	<input type="hidden" id="tmp">
+</body>
+</html>
+<script>
+	function Cong(){
+		var x1 = document.getElementById('x1').value;
+		var x2 = document.getElementById('x2').value;
+		document.getElementById('kq').value = parseInt(x1) + parseInt(x2);
+	}
+	function Tru(){
+		var x1 = document.getElementById('x1').value;
+		var x2 = document.getElementById('x2').value;
+		document.getElementById('kq').value = parseInt(x1) - parseInt(x2);
+	}
+	function Nhan(){
+		var x1 = document.getElementById('x1').value;
+		var x2 = document.getElementById('x2').value;
+		document.getElementById('kq').value = parseInt(x1) * parseInt(x2);
+	}
+	function Chia(){
+		var x1 = document.getElementById('x1').value;
+		var x2 = document.getElementById('x2').value;
+		document.getElementById('kq').value = parseInt(x1)/parseInt(x2);
+	}
+	function Mu(){
+		var x1 = document.getElementById('x1').value;
+		var x2 = document.getElementById('x2').value;
+		document.getElementById('kq').value = Math.pow(parseInt(x1) , parseInt(x2));
+	}
+
+</script>

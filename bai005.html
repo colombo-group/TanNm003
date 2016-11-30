@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" id="form">
+        <input type="number" id="num" />
+        <button type="submit">Vẽ</button>
+    </form>
+    <div id="tam_giac" style="text-align: center;"></div>
+</body>
+</html>
+<script>
+    document.getElementById('form').onsubmit = function(){
+        var num = document.getElementById('num').value;
+        var text = "";
+        for(var i =1;i<=num;i++){
+            var half = i/2;
+            for(var j = i;j>half;j--){
+                text+=j%10+" ";
+            }
+            if(i%2!=0){
+                var tmp = parseInt(half)+2;
+                while(tmp <= i){
+                    text+= tmp%10 + " ";
+                    tmp++;
+                }
+            }
+            else{
+                var tmp = half+1;
+                while(tmp <= i){
+                    text+= tmp%10 + " ";
+                    tmp++;
+                }
+            }
+            text+="<br/>";
+        }   
+
+     document.getElementById("tam_giac").innerHTML = text;
+    }
+</script>

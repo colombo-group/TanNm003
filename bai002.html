@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vẽ Đồ Thị</title>
+</head>
+<body>
+	<form action="#" onsubmit="draw()" >
+		<table id="form">
+			
+		</table>
+	<button type="submit">Vẽ </button>
+
+	</form>
+	<table id='table'>
+		
+	</table>
+</body>
+</html>
+<script>
+	var array = new Array();
+	array[0] = 'châu á';
+	array[1] = 'châu âu';
+	array[2] = 'châu mỹ';
+	array[3] = 'châu phi';
+	array[4] = 'châu đại dương';
+	var tmp='';
+	for (var i = 0; i < array.length; i++) {
+		tmp+="<tr><td>"+array[i]+"</td><td><input type='number' id='"+i+"' min='0' max='100' /></td></tr>";
+	}
+	//console.log(tmp);
+	document.getElementById("form").innerHTML = tmp;
+
+	function draw(){
+		var tmp = [];
+		for (var i = 0; i<	array.length; i++) {
+			var x = document.getElementById(i).value;
+			tmp.push(x);
+		}		
+		var y='';	
+		for (var i = 0; i <array.length; i++) {
+				y+="<tr><td>"+array[i]+"</td>";
+				 y +="<td><div style='width:400px;height:20px; background:#ffffff;border:1px solid navy'>";
+				y+="<div style='width:"+tmp[i]+"%;height:20px;background:red;float:left'>"+tmp[i]+"%</div></div>";
+				y+="</td></tr>";
+		}
+		document.getElementById('table').innerHTML = y;
+		return false;
+	}
+</script>

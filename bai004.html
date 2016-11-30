@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>In Tam Giác</title>
+	
+</head>
+<body>
+	<form action="#" id='form'>
+		<input type="number" id="input" placeholder="Nhập số " min='0' />
+		<button type="button" id="submit">Vẽ</button>	
+	</form>
+	<div id="tam_giac">
+		
+	</div>
+</body>
+</html>
+<script>
+	document.getElementById('form').onsubmit = function(){
+		Draw();
+	}
+	function Draw(){
+		var num = document.getElementById('input').value;
+		var text = '';
+		for(var x =1; x<=num;x++){
+			for(var y=x ;y>=1;y--){
+				text+= y%10+ " ";
+			}
+			text+="<br/>";			
+		}
+		document.getElementById('tam_giac').innerHTML =text ;
+	}
+</script>

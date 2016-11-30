@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Đồng Hồ Bấm</title>
+</head>
+<body>
+	<h2 id='info'></h2>
+	<span><button id='begin'>bắt đầu</button><button id='stop'>dừng lại</button><button id='reset'>reset</button></span>
+</body>
+</html>
+<script>
+	function ShowTime(m,m1,s,s1,mm){
+		var x = ""+m+m1+":"+s+s1+"."+mm;
+		document.getElementById('info').innerHTML = x;
+	}
+	var m = 0;
+	var m1 = 0;
+	var s = 0;
+	var s1 = 0;
+	var mm = 0;
+
+	ShowTime(m,m1,s,s1,mm);
+
+	document.getElementById('begin').onclick = function(){
+		var setTime = setInterval(function(){Begin()},100);
+		document.getElementById('stop').onclick = function(){
+			clearInterval(setTime);
+		}
+		document.getElementById('reset').onclick = function(){
+			clearInterval(setTime);
+			ShowTime(0,0,0,0,0);
+		}
+	}
+
+	//Begin function
+	function Begin(){
+		if(mm==10){
+				s1++;
+				mm=0;
+				}	
+			if(s1==10){
+				s++;
+				s1=0;
+			}
+			if(s==6){
+				m1++;
+				s=0;
+			}
+			if(m1==10){
+				m++;
+				m1=0;
+			}
+			mm++;
+		ShowTime(m,	m1,s,s1,mm);
+
+	}
+	
+</script>

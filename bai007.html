@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		table {
+			width: 100%;
+			max-width: 600px;
+			height: 320px;
+			border-collapse: collapse;
+			border: 1px solid #38678f;
+			margin: 50px auto;
+			background: white;
+		}
+		th {
+			background: steelblue;
+			height: 54px;
+			font-weight: lighter;
+			text-shadow: 0 1px 0 #38678f;
+			color: white;
+			border: 1px solid #38678f;
+			box-shadow: inset 0px 1px 2px #568ebd;
+			transition: all 0.2s;
+		}
+		tr {
+			border-bottom: 1px solid #cccccc;
+		}
+		tr:last-child {
+			border-bottom: 0px;
+		}
+		td {
+			border-right: 1px solid #cccccc;
+			padding: 10px;
+			transition: all 0.2s;
+		}
+		#today{
+			background: grey;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr><th id='info' colspan="7"></th></tr>
+			<tr>
+				<th>Su</th>
+				<th>Mo</th>
+				<th>Tue</th>
+				<th>Wed</th>
+				<th>Thu</th>
+				<th>Fri</th>
+				<th>Sat</th>
+			</tr>
+		</thead>
+		<tbody id="caledar">
+			
+		</tbody>
+	</table>
+</body>
+</html>
+<script>
+	var day = ['Jan','Feb','Mar','April','may','jun','jul','aug','set','oct','nov','dec'];
+	var today = new Date();
+	var thisYear = today.getFullYear();
+	var thisMonth = today.getMonth();
+	var thisDay = today.getDate();
+	var date = new Date(thisYear,thisMonth,01);
+	var firstDay = date.getDay();
+	document.getElementById('info').innerHTML = day[thisMonth]+" "+thisYear;
+
+	var days = [];
+	var newDays = [];
+	var i =0;
+	while(i< firstDay){
+		newDays.push(' ');
+		i++;
+	}
+	while(date.getMonth() == thisMonth){
+		newDays.push(date.getDate());
+		date.setDate(date.getDate()+1);
+	}
+	var leng = newDays.length;
+	var last = leng-1;
+	var tmp = new Date(thisYear,thisMonth,newDays[last]);
+	i= tmp.getDay();
+	while(i<=5){
+		newDays.push(" ");
+		i++;
+	}
+	var text = "";
+	var tmp = 0;
+	var leng = newDays.length;
+
+	for(var i = 0; i < leng;i++){
+		
+		
+		if(tmp == 0 ){
+			if(newDays[i] == thisDay){
+				text+="<tr><td id='today'>";
+				text+= newDays[i]+"</td>";
+			}
+			else{
+				text +="<tr><td>";
+				text+= newDays[i]+"</td>"; 
+			}
+			
+			tmp++;
+		}
+		else if(tmp == leng-1 || tmp==6){
+			if(newDays[i]==thisDay){
+			text+="<td id='today'>";
+
+			}
+			else{
+			text+="<td>";
+
+			}
+			text+= newDays[i]; 
+			text +="</td></tr>";
+			tmp =0;
+		}
+		else {
+			if(newDays[i]==thisDay){
+			text+="<td id='today'>";
+
+			}
+			else{
+			text+="<td>";
+
+			}
+			text+=newDays[i];
+			text+="</td>";
+			tmp++;
+
+		}
+	}	
+	document.getElementById('caledar').innerHTML = text;
+	//document.getElementsByTagName("H1")[0].setAttribute("class", "democlass");
+</script>
